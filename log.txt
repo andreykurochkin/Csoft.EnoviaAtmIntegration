@@ -1,0 +1,16 @@
+2021-03-19 23:47:17.882 +03:00 [INF] MSBuild registered from C:\Program Files\dotnet\sdk\5.0.103\
+2021-03-19 23:47:17.921 +03:00 [INF] Registered 1 extensions:
+	Default extension
+2021-03-19 23:47:19.255 +03:00 [INF] Initializing upgrade step Select an entrypoint
+2021-03-19 23:47:19.256 +03:00 [INF] Setting entrypoint to only project in solution: C:\Users\kurochkin.andrei\source\repos\Csoft.AtomexpertIntegration\Csoft.AtomexpertIntegration.csproj
+2021-03-19 23:47:19.256 +03:00 [INF] Initializing upgrade step Select project to upgrade
+2021-03-19 23:47:19.257 +03:00 [INF] Setting only project in solution as the current project: C:\Users\kurochkin.andrei\source\repos\Csoft.AtomexpertIntegration\Csoft.AtomexpertIntegration.csproj
+2021-03-19 23:47:19.258 +03:00 [INF] Initializing upgrade step Back up project
+2021-03-20 00:53:58.535 +03:00 [INF] MSBuild registered from C:\Program Files\dotnet\sdk\5.0.103\
+2021-03-20 00:53:58.565 +03:00 [INF] Registered 1 extensions:
+	Default extension
+2021-03-20 00:53:59.682 +03:00 [INF] Initializing upgrade step Select an entrypoint
+2021-03-20 00:53:59.683 +03:00 [INF] Setting entrypoint to only project in solution: C:\Users\kurochkin.andrei\source\repos\Csoft.AtomexpertIntegration\Csoft.AtomexpertIntegration.csproj
+2021-03-20 00:53:59.684 +03:00 [INF] Initializing upgrade step Select project to upgrade
+2021-03-20 00:53:59.684 +03:00 [INF] Setting only project in solution as the current project: C:\Users\kurochkin.andrei\source\repos\Csoft.AtomexpertIntegration\Csoft.AtomexpertIntegration.csproj
+2021-03-20 00:53:59.685 +03:00 [INF] Initializing upgrade step Back up project

@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csoft.EnoviaAtmIntegration", "Csoft.EnoviaAtmIntegration.csproj", "{6BD6B4CC-BB8D-4BF2-8822-E985AA22D179}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AEA00C2B-E2AE-4E71-B6A2-FB015AF91402} = {AEA00C2B-E2AE-4E71-B6A2-FB015AF91402}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csoft.EnoviaAtmIntegration.AtmContext", "..\Csoft.EnoviaAtmIntegration.AtmContext\Csoft.EnoviaAtmIntegration.AtmContext.csproj", "{AEA00C2B-E2AE-4E71-B6A2-FB015AF91402}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Farvater|Any CPU = Farvater|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6BD6B4CC-BB8D-4BF2-8822-E985AA22D179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BD6B4CC-BB8D-4BF2-8822-E985AA22D179}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BD6B4CC-BB8D-4BF2-8822-E985AA22D179}.Farvater|Any CPU.ActiveCfg = Farvater|Any CPU
+		{6BD6B4CC-BB8D-4BF2-8822-E985AA22D179}.Farvater|Any CPU.Build.0 = Farvater|Any CPU
+		{6BD6B4CC-BB8D-4BF2-8822-E985AA22D179}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BD6B4CC-BB8D-4BF2-8822-E985AA22D179}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEA00C2B-E2AE-4E71-B6A2-FB015AF91402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEA00C2B-E2AE-4E71-B6A2-FB015AF91402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEA00C2B-E2AE-4E71-B6A2-FB015AF91402}.Farvater|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEA00C2B-E2AE-4E71-B6A2-FB015AF91402}.Farvater|Any CPU.Build.0 = Debug|Any CPU
+		{AEA00C2B-E2AE-4E71-B6A2-FB015AF91402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEA00C2B-E2AE-4E71-B6A2-FB015AF91402}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1BE0EF4F-9BB7-44F2-A493-746E123152F5}
+	EndGlobalSection
+EndGlobal
