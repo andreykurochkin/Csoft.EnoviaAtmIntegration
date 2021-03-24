@@ -7,14 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Csoft.EnoviaAtmIntegration.Domain {
-    public class NoSentToTdmsEcas : Cas, IAsJson {
+    public class NoSentToTdmsEcas : Cas {
         private readonly string json;
         public NoSentToTdmsEcas() {
-            json = CasJsonFactory.CreateNoSentToTdmsEcasAsJson();
+            json = new NoSentToTdmsEcasJson().ToString();
             list = CreateICas(json).ToList();
-        }
-        public string ToJson() {
-            return json;
         }
     }
 }
