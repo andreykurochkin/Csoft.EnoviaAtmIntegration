@@ -10,7 +10,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
     public class Ecas : Cas {
         private readonly string json;
         public Ecas() {
-            json = CasJsonFactory.CreateEcasAsJson();
+            json = new EcasJson().ToString();
             list = CreateICas(json).ToList();
         }
     }
