@@ -14,13 +14,10 @@ namespace Csoft.EnoviaAtmIntegration.Domain.BusinessIntelligence {
         public void Print() {
             CreateFile(folderFactory.GetLayoutFolder(),
                 "allEca.txt",
-                //CasJsonFactory.CreateEcasAsJson()
-                //new Ecas().ToJson()
                 new EcasJson().ToString()
             ); 
             CreateFile(folderFactory.GetLayoutFolder(),
                 "ecaWithNoSentToTdmsDate.txt",
-                //CasJsonFactory.CreateNoSentToTdmsEcasAsJson()
                 new NoSentToTdmsEcasJson().ToString()
             );
             CreateFile(folderFactory.GetLayoutFolder(),
