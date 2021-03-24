@@ -1,17 +1,33 @@
 ﻿using System.Net.Http;
+using Csoft.EnoviaAtmIntegration.Domain;
 
 namespace Csoft.EnoviaAtmIntegration.Domain.Http {
+    /// <summary>
+    /// configures HttpRequestMessage via factory
+    /// </summary>
     public class PostHttpRequestMessage : HttpRequestMessage {
+        protected IPostHttpRequestMessageFactory Factory { get; }
         public PostHttpRequestMessage(IPostHttpRequestMessageFactory factory) {
-            Configure(factory);
+            Factory = factory;
+            Configure();
         }
-        private void Configure(IPostHttpRequestMessageFactory factory) {
-            RequestUri = factory.CreateUri();
-            Method = factory.CreateHttpMethod();
-            Headers.Add("Authorization", factory.CreateAuthorization()
+        protected void Configure() {
+            RequestUri = Factory.CreateUri();
+            Method = Factory.CreateHttpMethod();
+            Headers.Add("Authorization", Factory.CreateAuthorization()
                 .ToString());
-            Content = factory.CreateStringContent();
+            Content = Factory.CreateStringContent();
             Headers.Add("Accept", "application/json");
         }
+    }
+    /// <summary>
+    /// configures specific HttpRequestMessage
+    /// </summary>
+    public class NoSentToTdmsEcasPostHttpRequestMessage : PostHttpRequestMessage {
+        public NoSentToTdmsEcasPostHttpRequestMessage() : base(
+            new NoSentToTdmsRequestFactory(
+                new AllEcaRequestFactory()
+            )
+        ) { }
     }
 }

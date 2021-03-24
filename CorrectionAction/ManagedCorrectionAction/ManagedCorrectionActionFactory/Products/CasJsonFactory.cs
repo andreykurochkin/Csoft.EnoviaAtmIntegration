@@ -6,28 +6,49 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
     /// <summary>
     /// fetches json from Enovia
     /// </summary>
-    public class EcasJson : CasJson {
+    public class EcasJson {
+        private HttpClient HttpClient { get; }
+        private HttpRequestMessage HttpRequestMessage { get; }
         public EcasJson() {
-            SetHttpClient(
-                new BaseHttpClient(
-                    new PostHttpRequestMessage(
-                        new AllEcaRequestFactory()
-                    ), 
-                    new HttpClient()
-            ));
+            HttpClient = new();
+            HttpRequestMessage = new PostHttpRequestMessage(
+                new AllEcaRequestFactory()
+            );
+        }
+        public override string ToString() {
+            return HttpClient.SendAsync(HttpRequestMessage).Result.Content.ReadAsStringAsync().Result;
+        }
+    }
+    /// <summary>
+    /// fetches json from Enovia
+    /// </summary>
+    internal class NoSentToTdmsEcasJson : JsonDispatch {
+        protected override HttpRequestMessage HttpRequestMessage { get; } = 
+            new PostHttpRequestMessage(
+                new NoSentToTdmsRequestFactory(
+                    new AllEcaRequestFactory()
+                )
+            );
+    }
+
+    internal abstract class JsonDispatch {
+        protected HttpClient HttpClient { get; } = new();
+        protected virtual HttpRequestMessage HttpRequestMessage { get; }
+        public override string ToString() {
+            return HttpClient.SendAsync(HttpRequestMessage).Result.Content.ReadAsStringAsync().Result;
         }
     }
 
-    public abstract class CasJson {
-        protected IHttpRequestDispatch HttpClient { get; set; }
-        internal void SetHttpClient(IHttpRequestDispatch httpClient) {
-            HttpClient = httpClient;
-        }
-        public override string ToString() {
-            return HttpClient.SendRequest().Result
-                .Content.ReadAsStringAsync().Result;
-        }
-    }
+    //public abstract class CasJson {
+    //    protected IHttpRequestDispatch HttpClient { get; set; }
+    //    internal void SetHttpClient(IHttpRequestDispatch httpClient) {
+    //        HttpClient = httpClient;
+    //    }
+    //    public override string ToString() {
+    //        return HttpClient.SendRequest().Result
+    //            .Content.ReadAsStringAsync().Result;
+    //    }
+    //}
 
 
     /// <summary>
@@ -35,26 +56,26 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
     /// </summary>
     public class CasJsonFactory {
         public static string CreateEcasAsJson() {
-            IHttpRequestDispatch client = new BaseHttpClient(
-                new PostHttpRequestMessage(new AllEcaRequestFactory()),
-                new HttpClient()
-            );
-            var task = client.SendRequest().Result
-                .Content.ReadAsStringAsync();
-            return task.Result;
+            using (HttpClient httpClient = new()) {
+                var request = new PostHttpRequestMessage(
+                    new AllEcaRequestFactory()
+                );
+                var response = httpClient.SendAsync(request);
+                var json = response.Result.Content.ReadAsStringAsync();
+                return json.Result;
+            }
         }
         public static string CreateNoSentToTdmsEcasAsJson() {
-            IHttpRequestDispatch client = 
-                new BaseHttpClient(
-                    new PostHttpRequestMessage(
-                        new NoSentToTdmsRequestFactory(
-                            new AllEcaRequestFactory()
-                        )
-                    ),
-                   new HttpClient()
+            using (HttpClient httpClient = new()) {
+                var request = new PostHttpRequestMessage(
+                    new NoSentToTdmsRequestFactory(
+                        new AllEcaRequestFactory()
+                    )
                 );
-            return client.SendRequest().Result
-                .Content.ReadAsStringAsync().Result;
+                var response = httpClient.SendAsync(request);
+                var json = response.Result.Content.ReadAsStringAsync();
+                return json.Result;
+            }
         }
     }
 }

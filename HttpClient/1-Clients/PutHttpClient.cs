@@ -12,21 +12,15 @@ using System.Threading.Tasks;
 using Tdms.Api;
 using Tdms.Tasks;
 
-namespace Csoft.EnoviaAtmIntegration.Domain
-{
-    public class PutHttpClient : IHttpRequestDispatch
-    {
+namespace Csoft.EnoviaAtmIntegration.Domain {
+    public class PutHttpClient : IHttpRequestDispatch {
         private HttpClient httpClient = new HttpClient();
         private IPutHttpRequestMessageFactory factory;
-
         public PutHttpClient(
-            IPutHttpRequestMessageFactory factory)
-        {
+            IPutHttpRequestMessageFactory factory) {
             this.factory = factory;
         }
-
-        public Task<HttpResponseMessage> SendRequest()
-        {
+        public Task<HttpResponseMessage> SendRequest() {
             httpClient.DefaultRequestHeaders.Authorization =
                 factory.CreateAuthenticationHeaderValue();
 
