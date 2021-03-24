@@ -10,7 +10,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
     /// <summary>
     /// filters enovia correction actions to be not later than specified date
     /// </summary>
-    public class EcasBeforeDate : Ecas {
+    public class EcasBeforeDate : Cas {
         public EcasBeforeDate(Cas ecas, DateTime date ) {
             var query = ecas
                 .Select(eca => new { Self = eca, Date = eca.Modified.ToDateTime() })

@@ -26,7 +26,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain
             UpdateContext = client;
             this.exportDateTime = exportDateTime;
             tcas = new Lazy<IEnumerable<ICa>>(() => {
-                var ICaClient = new KudanKulamTcaClient(
+                var ICaClient = new KudanTcaClient(
                     new TcaClient(
                         new McaClient(correctionActions)
                     )

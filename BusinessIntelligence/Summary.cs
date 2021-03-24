@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using System.Text;
 
-namespace Csoft.EnoviaAtmIntegration.Domain.Analysis {
+namespace Csoft.EnoviaAtmIntegration.Domain.BusinessIntelligence {
     public abstract class Summary {
         protected StringBuilder stringBuilder = new StringBuilder();
         public void Append(string input) {

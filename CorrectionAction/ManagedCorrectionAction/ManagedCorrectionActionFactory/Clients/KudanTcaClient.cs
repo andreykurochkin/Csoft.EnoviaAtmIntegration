@@ -8,13 +8,13 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Csoft.EnoviaAtmIntegration.Domain {
     /// <summary>
-    /// leaves items with KudanKulam
+    /// leaves items with Kudan
     /// </summary>
-    public class KudanKulamTcaClient : ICaClient {
+    public class KudanTcaClient : ICaClient {
         private ICaClient Origin { get; }
         private Lazy<IEnumerable<string>> kudanKulamGuids;
         private IEnumerable<string> KudanKulamGuids { get => kudanKulamGuids.Value; }
-        public KudanKulamTcaClient(ICaClient origin) {
+        public KudanTcaClient(ICaClient origin) {
             Origin = origin;
             kudanKulamGuids = new Lazy<IEnumerable<string>>(() =>
                 new KudanKulamNppMaps().Select(nppMap => nppMap.Guid)

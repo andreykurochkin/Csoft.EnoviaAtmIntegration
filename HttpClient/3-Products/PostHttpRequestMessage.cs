@@ -1,39 +1,17 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Schema;
-using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using Tdms.Api;
-using Tdms.Tasks;
+﻿using System.Net.Http;
 
-namespace Csoft.EnoviaAtmIntegration.Domain {
-    public class PostHttpRequestMessage 
-        : HttpRequestMessage, IConfigurable
-    {
-        private IPostHttpRequestMessageFactory requestFactory;
-
-        public PostHttpRequestMessage(
-            IPostHttpRequestMessageFactory httpRequestMessageFactory)
-        {
-            this.requestFactory = httpRequestMessageFactory;
+namespace Csoft.EnoviaAtmIntegration.Domain.Http {
+    public class PostHttpRequestMessage : HttpRequestMessage {
+        public PostHttpRequestMessage(IPostHttpRequestMessageFactory factory) {
+            Configure(factory);
         }
-
-        public HttpRequestMessage Configure()
-        {
-            this.RequestUri = requestFactory.CreateUri();
-            this.Method = requestFactory.CreateHttpMethod();
-            this.Headers.Add("Authorization", 
-                requestFactory.CreateAuthorization().ToString());
-            this.Content = requestFactory.CreateStringContent();
-
-            this.Headers.Add("Accept", "application/json");
-
-            return this;
+        private void Configure(IPostHttpRequestMessageFactory factory) {
+            RequestUri = factory.CreateUri();
+            Method = factory.CreateHttpMethod();
+            Headers.Add("Authorization", factory.CreateAuthorization()
+                .ToString());
+            Content = factory.CreateStringContent();
+            Headers.Add("Accept", "application/json");
         }
     }
 }

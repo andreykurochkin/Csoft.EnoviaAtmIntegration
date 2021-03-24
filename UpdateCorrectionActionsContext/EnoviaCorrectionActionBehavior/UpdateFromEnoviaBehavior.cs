@@ -45,7 +45,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
                 return;
             }
 
-            var youthItems =new KudanKulamTcaClient( new TcaClient(new McaClient(new List<ICa>() { eca }))).CreateItems();
+            var youthItems =new KudanTcaClient( new TcaClient(new McaClient(new List<ICa>() { eca }))).CreateItems();
 
             var pairs = new IntersectIdMapItemsFamily(oldItems, youthItems).CreateItems();
 

@@ -10,6 +10,6 @@ namespace Csoft.EnoviaAtmIntegration.Domain
 {
     public interface IAsJson
     {
-        string AsJson();
+        string ToJson();
     }
 }

@@ -1,26 +1,26 @@
 ﻿using System;
 using System.IO;
 using Tdms.Api;
-using Csoft.EnoviaAtmIntegration.Domain;
 
 namespace Csoft.EnoviaAtmIntegration.Domain.BusinessIntelligence {
     public class Analytics {
-        public TDMSApplication App { get; }
         private FolderFactory folderFactory = new FolderFactory(DateTime.Now);
         private ISummaryContextFactory forecastFactory = new SummaryContextFactory();
         private IReportContextFactory reportFactory;
+
         public Analytics(TDMSApplication app) {
-            App = app;
             reportFactory = new ReportContextFactory(forecastFactory, app);
         }
         public void Print() {
             CreateFile(folderFactory.GetLayoutFolder(),
                 "allEca.txt",
-                CasJsonFactory.CreateEcasAsJson()
+                //CasJsonFactory.CreateEcasAsJson()
+                new Ecas().ToJson()
             );
             CreateFile(folderFactory.GetLayoutFolder(),
                 "ecaWithNoSentToTdmsDate.txt",
-                CasJsonFactory.CreateNoSentToTdmsEcasAsJson()
+                //CasJsonFactory.CreateNoSentToTdmsEcasAsJson()
+                new NoSentToTdmsEcas().ToJson()
             );
             CreateFile(folderFactory.GetLayoutFolder(),
                 "forecast.txt",
@@ -30,11 +30,11 @@ namespace Csoft.EnoviaAtmIntegration.Domain.BusinessIntelligence {
                 "report.txt",
                 new CaReport(reportFactory).ToString());
         }
-        private static void CreateFile(DirectoryInfo folder,
-            string fileName, string content) {
-            var file = File.CreateText($"{folder.FullName}\\{fileName}");
-            file.WriteLine(content);
-            file.Close();
+        private static void CreateFile(DirectoryInfo folder, string fileName, string content) {
+            using (var file = File.CreateText($"{folder.FullName}\\{fileName}")) {
+                file.WriteLine(content);
+                file.Close();
+            }
         }
     }
 }

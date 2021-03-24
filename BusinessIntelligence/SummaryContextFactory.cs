@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Csoft.EnoviaAtmIntegration.Domain.Analysis {
+namespace Csoft.EnoviaAtmIntegration.Domain.BusinessIntelligence {
     /// <summary>
     /// creates IEnumerable<ICa> items for summary items
     /// </summary>

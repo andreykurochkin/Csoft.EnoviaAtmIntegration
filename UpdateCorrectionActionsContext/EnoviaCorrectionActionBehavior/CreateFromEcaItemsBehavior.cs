@@ -19,7 +19,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
         public CreateFromEcaItemsBehavior(UpdateContext client, IEnumerable<ICa> correctionActions) {
             UpdateContext = client;
             tcas = new Lazy<IEnumerable<ICa>>(() => {
-                var ICaClient = new KudanKulamTcaClient(
+                var ICaClient = new KudanTcaClient(
                     new TcaClient(
                         new McaClient(correctionActions)
                     )

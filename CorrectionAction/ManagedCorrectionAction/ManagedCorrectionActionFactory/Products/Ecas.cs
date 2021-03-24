@@ -13,7 +13,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
             json = CasJsonFactory.CreateEcasAsJson();
             list = CreateICas(json).ToList();
         }
-        public string AsJson() {
+        public string ToJson() {
             return json;
         }
     }

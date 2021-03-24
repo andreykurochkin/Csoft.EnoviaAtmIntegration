@@ -8,6 +8,34 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Csoft.EnoviaAtmIntegration.Domain {
+
+    /// <summary>
+    /// fetches json from Enovia
+    /// </summary>
+    public class EcasJson : CasJson {
+        public EcasJson() {
+            SetHttpClient(
+                new BaseHttpClient(
+                    new PostHttpRequestMessage(
+                        new AllEcaRequestFactory()
+                    ).Configure(), 
+                    new HttpClient()
+            ));
+        }
+    }
+
+    public abstract class CasJson {
+        protected IHttpRequestDispatch HttpClient { get; set; }
+        internal void SetHttpClient(IHttpRequestDispatch httpClient) {
+            HttpClient = httpClient;
+        }
+        public override string ToString() {
+            return HttpClient.SendRequest().Result
+                .Content.ReadAsStringAsync().Result;
+        }
+    }
+
+
     /// <summary>
     /// creates ICas items
     /// </summary>
@@ -36,8 +64,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
         }
         private static HttpRequestMessage CreateRequest(
             IPostHttpRequestMessageFactory factory) {
-            IConfigurable request =
-                new PostHttpRequestMessage(factory);
+            IConfigurable request = new PostHttpRequestMessage(factory);
             return request.Configure();
         }
     }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Csoft.EnoviaAtmIntegration.Domain {
     public class Tcas : Cas {
         public Tcas(Cas ecas) {
-            list = new KudanKulamTcaClient(
+            list = new KudanTcaClient(
                 new TcaClient(
                     new McaClient(
                         ecas
