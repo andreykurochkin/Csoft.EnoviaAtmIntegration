@@ -20,14 +20,4 @@ namespace Csoft.EnoviaAtmIntegration.Domain.Http {
             Headers.Add("Accept", "application/json");
         }
     }
-    /// <summary>
-    /// configures specific HttpRequestMessage
-    /// </summary>
-    public class NoSentToTdmsEcasPostHttpRequestMessage : PostHttpRequestMessage {
-        public NoSentToTdmsEcasPostHttpRequestMessage() : base(
-            new NoSentToTdmsRequestFactory(
-                new AllEcaRequestFactory()
-            )
-        ) { }
-    }
 }
