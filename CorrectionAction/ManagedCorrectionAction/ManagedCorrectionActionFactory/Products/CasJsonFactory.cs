@@ -1,11 +1,5 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net.Http;
+using Csoft.EnoviaAtmIntegration.Domain.Http;
 
 namespace Csoft.EnoviaAtmIntegration.Domain {
 
@@ -18,7 +12,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
                 new BaseHttpClient(
                     new PostHttpRequestMessage(
                         new AllEcaRequestFactory()
-                    ).Configure(), 
+                    ), 
                     new HttpClient()
             ));
         }
@@ -42,7 +36,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
     public class CasJsonFactory {
         public static string CreateEcasAsJson() {
             IHttpRequestDispatch client = new BaseHttpClient(
-                CreateRequest(new AllEcaRequestFactory()),
+                new PostHttpRequestMessage(new AllEcaRequestFactory()),
                 new HttpClient()
             );
             var task = client.SendRequest().Result
@@ -52,7 +46,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
         public static string CreateNoSentToTdmsEcasAsJson() {
             IHttpRequestDispatch client = 
                 new BaseHttpClient(
-                    CreateRequest(
+                    new PostHttpRequestMessage(
                         new NoSentToTdmsRequestFactory(
                             new AllEcaRequestFactory()
                         )
@@ -61,11 +55,6 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
                 );
             return client.SendRequest().Result
                 .Content.ReadAsStringAsync().Result;
-        }
-        private static HttpRequestMessage CreateRequest(
-            IPostHttpRequestMessageFactory factory) {
-            IConfigurable request = new PostHttpRequestMessage(factory);
-            return request.Configure();
         }
     }
 }

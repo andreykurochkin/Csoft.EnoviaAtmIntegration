@@ -12,7 +12,7 @@ using Tdms.Api;
 using Tdms.Tasks;
 
 namespace Csoft.EnoviaAtmIntegration.Domain {
-    public class GetHttpRequestMessage : HttpRequestMessage, IConfigurable {
+    public class GetHttpRequestMessage : HttpRequestMessage {
         private IGetHttpRequestMessageFactory factory;
         public GetHttpRequestMessage(IGetHttpRequestMessageFactory factory) {
             this.factory = factory;
