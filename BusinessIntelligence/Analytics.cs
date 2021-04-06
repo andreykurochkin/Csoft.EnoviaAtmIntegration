@@ -1,7 +1,8 @@
 ﻿using System;
 using System.IO;
 using Tdms.Api;
-using Csoft.EnoviaAtmIntegration.Domain;
+using Csoft.EnoviaAtmIntegration.Utilities.IO;
+
 namespace Csoft.EnoviaAtmIntegration.Domain.BusinessIntelligence {
     public class Analytics {
         private FolderFactory folderFactory = new FolderFactory(DateTime.Now);

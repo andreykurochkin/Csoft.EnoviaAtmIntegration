@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-
-namespace Csoft.EnoviaAtmIntegration.Domain.Analysis
+﻿namespace Csoft.EnoviaAtmIntegration.Domain.BusinessIntelligence
 {
     public interface ISummaryContextFactory
     {

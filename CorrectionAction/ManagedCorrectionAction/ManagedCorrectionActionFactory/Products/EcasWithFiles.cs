@@ -15,8 +15,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain
     {
         public EcasWithFiles(Cas ecas)
         {
-            var query = ecas
-                .Where(eca =>
+            var query = ecas.Where(eca =>
                 (Convert.ToBoolean(eca.HasFiles)));
             list = query.ToList();
         }

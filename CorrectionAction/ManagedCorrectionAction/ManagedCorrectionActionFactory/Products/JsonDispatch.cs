@@ -1,6 +1,9 @@
 ﻿using System.Net.Http;
 
 namespace Csoft.EnoviaAtmIntegration.Domain {
+    /// <summary>
+    /// its implementations fetche json from Enovia
+    /// </summary>
     internal abstract class JsonDispatch {
         protected HttpClient HttpClient { get; } = new();
         internal protected abstract HttpRequestMessage HttpRequestMessage { get; }
