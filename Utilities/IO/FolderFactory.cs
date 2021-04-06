@@ -2,6 +2,9 @@
 using System.IO;
 
 namespace Csoft.EnoviaAtmIntegration.Utilities.IO {
+    /// <summary>
+    /// manages creation of specific folders
+    /// </summary>
     public class FolderFactory {
         private DateTime Cache { get ; }
         public FolderFactory(DateTime cache) {

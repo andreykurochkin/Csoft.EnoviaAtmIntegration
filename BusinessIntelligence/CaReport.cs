@@ -1,19 +1,23 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace Csoft.EnoviaAtmIntegration.Domain.BusinessIntelligence {
     public class CaReport : Summary {
-        private IReportContextFactory Factory { get; }
-        public CaReport(IReportContextFactory factory) {
-            Factory = factory;
+        TdmsContext TdmsContext { get; }
+        Lazy<Ecas> Ecas { get; }
+        public CaReport(TdmsContext tdmsContext) {
+            TdmsContext = tdmsContext;
+            Ecas = new(new Ecas());
         }
         public override void AppendLines() {
             AppendLine("Report");
             Append("amount of IDs in Enovia ");
-            AppendLine($"{Factory.CreateEcas().ToList().Count}");
+            AppendLine($"{Ecas.Value.Count()}");
             Append("amount of IDs in TDMS ");
-            var uniqueCachedIds = Factory.CreateCachedItems().Select(i => i.Id).Distinct();
+            var uniqueCachedIds = new CachedActiveVersions(TdmsContext).Select(i => i.Id)
+                .Distinct();
             AppendLine(uniqueCachedIds.Count().ToString());
-            var uniqueWebIds = Factory.CreateEcas().Select(i => i.Id);
+            var uniqueWebIds = Ecas.Value.Select(i => i.Id);
             var WebMinusTdms = uniqueWebIds.Except(uniqueCachedIds);
             if (WebMinusTdms.Any()) {
                 Append("IDs missing from TDMS: ");

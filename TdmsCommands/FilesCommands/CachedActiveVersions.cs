@@ -23,7 +23,6 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
             TdmsContext = context;
             CacheDataBase();
         }
-
         private void CacheDataBase() {
             TdmsContext.CaRoot.Objects
                 .Where(obj => obj.ActiveVersion)
