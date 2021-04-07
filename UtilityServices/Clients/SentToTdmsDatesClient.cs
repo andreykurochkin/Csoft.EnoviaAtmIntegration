@@ -1,5 +1,4 @@
-﻿using Csoft.EnoviaAtmIntegration.Domain.Analysis;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -13,9 +12,9 @@ namespace Csoft.EnoviaAtmIntegration.Domain.UtilityServices {
     /// updates SentToTdms attribute value in Enovia
     /// </summary>
     class SentToTdmsDatesClient : IUtilityService {
-        private IEnumerable<string> ids;
-        private DateTime date;
-        private EnoviaPutHttpClientLogged httpClient;
+        private readonly IEnumerable<string> ids;
+        private readonly DateTime date;
+        private readonly EnoviaPutHttpClientLogged httpClient;
 
         public SentToTdmsDatesClient(IEnumerable<string> ids,
                                      DateTime date,

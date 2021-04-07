@@ -11,7 +11,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain.Http {
             Factory = factory;
             Configure();
         }
-        protected void Configure() {
+        internal void Configure() {
             RequestUri = Factory.CreateUri();
             Method = Factory.CreateHttpMethod();
             Headers.Add("Authorization", Factory.CreateAuthorization()

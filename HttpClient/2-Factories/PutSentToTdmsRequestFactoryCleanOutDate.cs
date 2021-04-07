@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Schema;
-using Csoft.EnoviaAtmIntegration.Domain.Analysis;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -20,11 +19,9 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
         public AuthenticationHeaderValue CreateAuthenticationHeaderValue() {
             throw new NotImplementedException();
         }
-
         public StringContent CreateStringContent() {
             throw new NotImplementedException();
         }
-
         public Uri CreateUri() {
             throw new NotImplementedException();
         }

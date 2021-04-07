@@ -11,7 +11,6 @@ using System.Net.Http;
 using Tdms;
 using System.IO.Compression;
 using System.Globalization;
-using Csoft.EnoviaAtmIntegration.Domain.Analysis;
 
 namespace Csoft.EnoviaAtmIntegration.Domain {
     /// <summary>

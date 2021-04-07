@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Schema;
-using Csoft.EnoviaAtmIntegration.Domain.Analysis;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;

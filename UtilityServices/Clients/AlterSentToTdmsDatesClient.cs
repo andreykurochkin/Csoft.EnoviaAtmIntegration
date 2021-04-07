@@ -1,5 +1,4 @@
-﻿using Csoft.EnoviaAtmIntegration.Domain.Analysis;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -19,7 +18,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain.UtilityServices {
             Cache = cache;
             Client = client;
         }
-        private IEnumerable<string> Ids;
+        private readonly IEnumerable<string> Ids;
         private TDMSApplication App { get; }
         private CachedActiveVersions Cache { get; }
         private EnoviaPutHttpClient Client { get; }

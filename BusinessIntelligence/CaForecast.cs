@@ -14,7 +14,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain.BusinessIntelligence {
             AppendLine($"{Factory.CreateTcasWithFiles().Count()}");
             Append($"amount of CA in Enovia with no SentToTdmsDate: ");
             var noDate = Factory.CreateNoSentToTdmsEcas().ToList();
-            AppendLine($"{noDate.Count()}");
+            AppendLine($"{noDate.Count}");
             noDate.ForEach(eca => AppendLine(eca.Id));
         }
     }

@@ -15,8 +15,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
         public AttributeValues(Attributes attributes) {
             Attributes = attributes;
             foreach (TDMSAttribute attribute in Attributes) {
-                T result;
-                if (TryCast<T>(attribute.Value, out result)) {
+                if (TryCast<T>(attribute.Value, out T result)) {
                     list.Add(result);
                 }
             }

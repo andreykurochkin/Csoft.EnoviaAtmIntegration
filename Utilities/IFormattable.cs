@@ -4,10 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Csoft.EnoviaAtmIntegration.Domain.Analysis
-{
-    public interface IFormattable
-    {
+namespace Csoft.EnoviaAtmIntegration.Utilities {
+    public interface IFormattable {
         string Format();
     }
 }

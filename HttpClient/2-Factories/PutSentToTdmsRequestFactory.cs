@@ -1,4 +1,4 @@
-﻿using Csoft.EnoviaAtmIntegration.Domain.Analysis;
+﻿using Csoft.EnoviaAtmIntegration.Utilities;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -11,7 +11,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
     public class PutSentToTdmsRequestFactory :
         IPutHttpRequestMessageFactory {
         protected string Id { get; }
-        private DateTime date;
+        private readonly DateTime date;
         public PutSentToTdmsRequestFactory(string id, DateTime date) {
             this.Id = id;
             this.date = date;
@@ -21,11 +21,12 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
         }
         public StringContent CreateStringContent() {
             var formattedDate = new SlashedFormat(
-                new Analysis.RussianDateFormat(
-                    date));
+                new RussianDateFormat(
+                    date
+                )
+            );
             var json = "{\"pdSentToTDMS\":" + "\"" +
                 $"{formattedDate.Format()}" + "\"" + "}";
-
             return new StringContent(json, Encoding.UTF8,
                 "application/json");
         }

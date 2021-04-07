@@ -11,7 +11,8 @@ using System.Net.Http;
 using Tdms;
 using System.IO.Compression;
 using System.Globalization;
-using Csoft.EnoviaAtmIntegration.Domain.Analysis;
+using Csoft.EnoviaAtmIntegration.Utilities;
+
 namespace Csoft.EnoviaAtmIntegration.Domain {
     [TdmsApi("FileDownload")]
     class AlterFileDownload {
@@ -20,8 +21,8 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
             this.app = app;
         }
         public void Execute() {
-            HttpClient httpClient = new HttpClient();
-            CachedActiveVersions cache = new CachedActiveVersions(
+            HttpClient httpClient = new();
+            CachedActiveVersions cache = new(
                 new TdmsContext(app)
             );
             DirectoryInfo layoutFolder = new DirectoryInfo(app.WorkFolder)
@@ -39,14 +40,11 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
     /// </summary>
     [TdmsApi("FileDownload")]
     public class MockAlterFileDownload {
-        private TDMSApplication App { get; }
         private string Id { get; }
-
         public MockAlterFileDownload(TDMSApplication app, string id) {
-            App = app;
             Id = id;
-            HttpClient httpClient = new HttpClient();
-            CachedActiveVersions cache = new CachedActiveVersions(
+            HttpClient httpClient = new();
+            CachedActiveVersions cache = new(
                 new TdmsContext(app)
             );
             DirectoryInfo layoutFolder = new DirectoryInfo(app.WorkFolder)

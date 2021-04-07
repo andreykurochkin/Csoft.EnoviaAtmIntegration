@@ -1,32 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Tdms.Api;
+using Csoft.EnoviaAtmIntegration.Domain.BusinessIntelligence;
 
-namespace Csoft.EnoviaAtmIntegration.Domain.Tests
-{
-    class PrintAnalyticsWhenNoCorrectionActionInTdms : ITdmsTest
-    {
-        private TDMSApplication app;
-
-        public PrintAnalyticsWhenNoCorrectionActionInTdms(
-            TDMSApplication app)
-        {
-            this.app = app;
+namespace Csoft.EnoviaAtmIntegration.Domain.Tests {
+    class PrintAnalyticsWhenNoCorrectionActionInTdms : ITdmsTest {
+        private TDMSApplication App { get; }
+        public PrintAnalyticsWhenNoCorrectionActionInTdms(TDMSApplication app) {
+            App = app;
         }
-
-        public void Execute()
-        {
-            try
-            {
-                new Analysis.Analytics(app).Print();
+        public void Execute() {
+            try {
+                new Analytics(App).Print();
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 throw new Exception($"Ошибка экспорта данных из Enovia в TDMS \n {ex.Message}");
             };
         }

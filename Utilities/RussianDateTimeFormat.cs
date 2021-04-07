@@ -5,19 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
 
-namespace Csoft.EnoviaAtmIntegration.Domain.Analysis
-{
-    public class RussianDateTimeFormat : IFormattable
-    {
-        private DateTime cache;
-
-        public RussianDateTimeFormat(DateTime cache)
-        {
+namespace Csoft.EnoviaAtmIntegration.Utilities {
+    public class RussianDateTimeFormat : IFormattable {
+        private readonly DateTime cache;
+        public RussianDateTimeFormat(DateTime cache) {
             this.cache = cache;
         }
-
-        public string Format()
-        {
+        public string Format() {
             return cache.ToString("dd.MM.yyyy HH.mm.ss");
         }
     }

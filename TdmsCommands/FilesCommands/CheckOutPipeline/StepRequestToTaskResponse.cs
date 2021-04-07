@@ -19,7 +19,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
             HttpClient = httpClient;
         }
         public Task<HttpResponseMessage> Process(HttpRequestMessage input) {
-            HttpClient.Send(input);
+            return HttpClient.SendAsync(input);
         }
     }
 }

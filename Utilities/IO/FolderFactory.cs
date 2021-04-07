@@ -1,29 +1,31 @@
 ﻿using System;
 using System.IO;
+using Csoft.EnoviaAtmIntegration.Utilities;
 
 namespace Csoft.EnoviaAtmIntegration.Utilities.IO {
     /// <summary>
     /// manages creation of specific folders
     /// </summary>
     public class FolderFactory {
-        private DateTime Cache { get ; }
-        public FolderFactory(DateTime cache) {
-            this.Cache = cache;
-        }
-        private string GetDateTimeName() {
-            return new DashedFormat(
-                new RussianDateTimeFormat(Cache)
-            ).Format();
+        private DateTime DateTime { get ; }
+        private Lazy<IFormattable> DashedFormat { get; }
+        private string Path { get; }
+        public FolderFactory(DateTime dateTime, string path) {
+            DateTime = dateTime;
+            Path = path;
+            DashedFormat = new(
+                new DashedFormat(
+                    new RussianDateTimeFormat(
+                        DateTime
+                    )
+                )
+            );
         }
         internal DirectoryInfo GetLayoutFolder() {
-            var root = GetRootFolder();
-            return root.CreateSubdirectory(GetDateTimeName());
+            return GetRootFolder().CreateSubdirectory(DashedFormat.Value.Format());
         }
-        // todo move to some other class
         internal DirectoryInfo GetRootFolder() {
-            return Directory
-                .CreateDirectory(
-                $"C:\\Users\\AP_Petrosyan_TV\\Documents\\kurochkin");
+            return Directory.CreateDirectory(Path);
         }
     }
 }

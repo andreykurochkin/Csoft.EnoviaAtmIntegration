@@ -1,5 +1,4 @@
-﻿using Csoft.EnoviaAtmIntegration.Domain.Analysis;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -20,7 +19,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain.UtilityServices {
             Id = id;
             Client = client;
             Factory = new CleanOutDatePutSentToTdmsRequestFactory(
-                new PutSentToTdmsRequestFactory(Id, default(DateTime))
+                new PutSentToTdmsRequestFactory(Id, default)
             );
         }
         public void Execute() {

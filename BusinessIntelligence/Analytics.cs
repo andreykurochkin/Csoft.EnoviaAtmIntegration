@@ -1,14 +1,15 @@
 ﻿using System;
-using System.IO;
 using Tdms.Api;
 using Csoft.EnoviaAtmIntegration.Utilities.IO;
 
 namespace Csoft.EnoviaAtmIntegration.Domain.BusinessIntelligence {
     public class Analytics {
-        private FolderFactory folderFactory = new FolderFactory(DateTime.Now);
+        private readonly string path = "C:\\Users\\AP_Petrosyan_TV\\Documents\\kurochkin";
+        private readonly FolderFactory folderFactory;
         private TDMSApplication App { get; }
         public Analytics(TDMSApplication app) {
             App= app;
+            folderFactory = new(DateTime.Now, path);
         }
         public void Print() {
             FileFactory.CreateFile(folderFactory.GetLayoutFolder(),

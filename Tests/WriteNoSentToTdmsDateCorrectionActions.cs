@@ -6,24 +6,10 @@ using System.Threading.Tasks;
 using Tdms.Api;
 using System.IO;
 
-namespace Csoft.EnoviaAtmIntegration.Domain.Tests
-{
-    class WriteNoSentToTdmsDateCorrectionActions : ITdmsTest
-    {
-        private TDMSApplication app;
-        private PrintAnalyticsWhenNoCorrectionActionInTdms origin;
-
-        public WriteNoSentToTdmsDateCorrectionActions(
-            TDMSApplication app)
-        {
-            this.app = app;
-            origin = new PrintAnalyticsWhenNoCorrectionActionInTdms(app);
-        }
-
-        public void Execute()
-        {
-            try
-            {
+namespace Csoft.EnoviaAtmIntegration.Domain.Tests {
+    class WriteNoSentToTdmsDateCorrectionActions : ITdmsTest {
+        public void Execute() {
+            try {
                 //var cachedDateTime = DateTime.Now;
                 //var folder = origin.AcquireLayoutFolder(
                 //    origin.AcquireRootFolder(), cachedDateTime);
@@ -31,15 +17,12 @@ namespace Csoft.EnoviaAtmIntegration.Domain.Tests
                 //var file = File.CreateText($"")
                 throw new NotFiniteNumberException();
             }
-            catch (Exception)
-            {
+            catch (Exception) {
 
                 throw;
             }
         }
-
-        internal void SaveJsonToFile(DateTime dateTime)
-        {
+        internal static void SaveJsonToFile() {
             //var folder = AcquireLayoutFolder(
             //    AcquireRootFolder(rootPath), 
             //    dateTime);
@@ -54,19 +37,13 @@ namespace Csoft.EnoviaAtmIntegration.Domain.Tests
             //file.Close();
             throw new NotFiniteNumberException();
         }
-
-        internal DirectoryInfo AcquireLayoutFolder(DirectoryInfo root, DateTime dateTime)
-        {
+        internal static DirectoryInfo AcquireLayoutFolder(DirectoryInfo root, DateTime dateTime) {
             return root.CreateSubdirectory(CreateDateTimeName(dateTime));
         }
-
-        internal DirectoryInfo AcquireRootFolder(string path)
-        {
+        internal static DirectoryInfo AcquireRootFolder(string path) {
             return Directory.CreateDirectory(path);
         }
-
-        internal string CreateDateTimeName(DateTime dateTime)
-        {
+        internal static string CreateDateTimeName(DateTime dateTime) {
             return dateTime.ToString().Replace(" ", "-").Replace(".", "-").Replace(":", "-");
         }
     }

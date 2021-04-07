@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Csoft.EnoviaAtmIntegration.Domain.Analysis
+namespace Csoft.EnoviaAtmIntegration.Utilities
 {
     public class SlashedFormat : IFormattable
     {
-        private IFormattable origin;
+        private readonly IFormattable origin;
 
         public SlashedFormat(IFormattable origin)
         { 

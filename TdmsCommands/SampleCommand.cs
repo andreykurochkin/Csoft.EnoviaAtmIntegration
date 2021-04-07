@@ -19,7 +19,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain
     public class SampleCommand
     {
         private readonly TDMSApplication application;
-        private readonly string T2ERootObjectDefName = "OBJ_SampleObjectDef";
+        //private readonly string T2ERootObjectDefName = "OBJ_SampleObjectDef";
         //private readonly string T2EFileDefName = "FILE_TXT";
 
         public SampleCommand(TDMSApplication application)
