@@ -23,7 +23,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain
         public TdmsObjectValueBehavior(TDMSAttribute attribute)
             : base(attribute)
         {
-            this.value = new InvocationSilent<TDMSAttribute, TDMSObject>(
+            this.value = new InvocationSafe<TDMSAttribute, TDMSObject>(
                 this.attribute, a => a.Object);
         }
     }

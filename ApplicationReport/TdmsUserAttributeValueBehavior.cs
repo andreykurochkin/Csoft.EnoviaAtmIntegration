@@ -26,7 +26,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain
         public TdmsUserAttributeValueBehavior(TDMSAttribute attribute)
             : base(attribute)
         {
-            this.value = new InvocationSilent<TDMSAttribute, TDMSUser>(
+            this.value = new InvocationSafe<TDMSAttribute, TDMSUser>(
                 attribute, a => a.User);
         }
     }

@@ -30,7 +30,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain.Tests
             });
             application.DebugPrint($"invocation with try catch: {invoker.Invoke()}");
 
-            invoker = new InvocationSilent<TDMSAttribute, bool>(attribute, a => Convert.ToBoolean(a.Value));
+            invoker = new InvocationSafe<TDMSAttribute, bool>(attribute, a => Convert.ToBoolean(a.Value));
             application.DebugPrint($"invocation silent: {invoker.Invoke()}");
         }
     }

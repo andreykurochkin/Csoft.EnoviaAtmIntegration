@@ -24,7 +24,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain
         public DateTimeValueBehavior(TDMSAttribute attribute)
             : base(attribute)
         {
-            this.value = new InvocationSilent<TDMSAttribute, DateTime>(attribute,
+            this.value = new InvocationSafe<TDMSAttribute, DateTime>(attribute,
                 a => Convert.ToDateTime(attribute.Value));
         }
     }
