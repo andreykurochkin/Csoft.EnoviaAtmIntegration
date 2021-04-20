@@ -24,7 +24,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain
             : base(attribute)
         {
             this.value = new InvocationSafe<TDMSAttribute, TDMSObject>(
-                this.attribute, a => a.Object);
+                this.Attribute, a => a.Object);
         }
     }
 }
