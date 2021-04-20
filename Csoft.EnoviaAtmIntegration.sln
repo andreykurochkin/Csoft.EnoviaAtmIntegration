@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csoft.EnoviaAtmIntegration", "Csoft.EnoviaAtmIntegration.csproj", "{6BD6B4CC-BB8D-4BF2-8822-E985AA22D179}"
 	ProjectSection(ProjectDependencies) = postProject
 		{AEA00C2B-E2AE-4E71-B6A2-FB015AF91402} = {AEA00C2B-E2AE-4E71-B6A2-FB015AF91402}
+		{3EFD12E9-D38C-48BE-93C2-1F36ECD5C967} = {3EFD12E9-D38C-48BE-93C2-1F36ECD5C967}
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csoft.EnoviaAtmIntegration.AtmContext", "..\Csoft.EnoviaAtmIntegration.AtmContext\Csoft.EnoviaAtmIntegration.AtmContext.csproj", "{AEA00C2B-E2AE-4E71-B6A2-FB015AF91402}"

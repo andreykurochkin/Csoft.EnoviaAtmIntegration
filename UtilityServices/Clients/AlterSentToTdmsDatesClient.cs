@@ -27,7 +27,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain.UtilityServices {
                 var cacheItem = Cache.FirstOrDefault(c => c.Id.Equals(id));
                 if (cacheItem != null) {
                     // Дата обновления A_Date
-                    var date = new DateTimeValueBehavior(
+                    var date = new DateTimeTdmsAttributeValueBehavior(
                         App.GetObjectByGUID(cacheItem.Guid).Attributes["A_Date"]
                     ).GetValue();
                     new UpdateDateInEnoviaAtm(id, date, Client).Execute();

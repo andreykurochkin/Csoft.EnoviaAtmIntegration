@@ -950,7 +950,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain
                 {
                     id = new StringValueBehavior(
                         o.Attributes["A_ObjectGUID"]).GetValue(),
-                    date = new DateTimeValueBehavior(
+                    date = new DateTimeTdmsAttributeValueBehavior(
                         o.Attributes["A_Date1"]).GetValue()
                 }).
                 Where(t => (t.date != default));
