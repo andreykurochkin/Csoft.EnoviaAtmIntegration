@@ -54,7 +54,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
 
         public string CreateNppId()
         {
-            var npp = new TdmsObjectValueBehavior(
+            var npp = new TdmsObjectTdmsAttributeValueBehavior(
                 setAttributes.GetAttribute("A_Object_Ref"))
                 .GetValue();
             if (npp == null) return string.Empty;
@@ -66,7 +66,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
 
         public string CreateNppUnit()
         {
-            var document = new TdmsObjectValueBehavior(
+            var document = new TdmsObjectTdmsAttributeValueBehavior(
                 row.Attributes["A_DocRef"]).GetValue();
             if (document == null) return string.Empty;
             var client = new BlocksNumbersClient(document);

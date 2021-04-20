@@ -1,30 +1,18 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Schema;
-using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using Tdms.Api;
-using Tdms.Data;
-using System.Runtime.CompilerServices;
+﻿using Tdms.Api;
 
-namespace Csoft.EnoviaAtmIntegration.Domain
-{
+namespace Csoft.EnoviaAtmIntegration.Domain {
     /// <summary>
     /// Invokes TdmsObject from TdmsAttribute
     /// </summary>
-    public class TdmsObjectValueBehavior
-        : TdmsAttributeValueBehavior<TDMSObject>
-    {
-        public TdmsObjectValueBehavior(TDMSAttribute attribute)
-            : base(attribute)
-        {
-            this.value = new InvocationSafe<TDMSAttribute, TDMSObject>(
-                this.Attribute, a => a.Object);
-        }
+    public class TdmsObjectTdmsAttributeValueBehavior : TdmsAttributeValueBehavior<TDMSObject> {
+        public TdmsObjectTdmsAttributeValueBehavior(TDMSAttribute attribute) : base(
+            attribute,
+            new SafeInvocation<TDMSAttribute, TDMSObject>(
+                new Invocation<TDMSAttribute, TDMSObject>(
+                    attribute, 
+                    (attr) => attr.Object
+                )
+            )
+        ) { }
     }
 }

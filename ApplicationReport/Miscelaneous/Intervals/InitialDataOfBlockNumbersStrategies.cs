@@ -22,12 +22,12 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
             return Document.Attributes[attributeName];
         }
         public TDMSAttribute GetTable() {
-            var folder = new TdmsObjectValueBehavior(Document.Attributes["A_Block_Ref"]).GetValue();
+            var folder = new TdmsObjectTdmsAttributeValueBehavior(Document.Attributes["A_Block_Ref"]).GetValue();
             if (folder == null) return null;
             return folder.Attributes[folderDefName];
         }
         public TDMSObject GetNpp() {
-            var npp = new TdmsObjectValueBehavior(Document.Attributes["A_Object_Ref"]).GetValue();
+            var npp = new TdmsObjectTdmsAttributeValueBehavior(Document.Attributes["A_Object_Ref"]).GetValue();
             return npp;
         }
     }

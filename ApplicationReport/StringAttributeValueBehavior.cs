@@ -1,5 +1,4 @@
-﻿using System;
-using Tdms.Api;
+﻿using Tdms.Api;
 
 namespace Csoft.EnoviaAtmIntegration.Domain {
     /// <summary>

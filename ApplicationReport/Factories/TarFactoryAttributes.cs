@@ -53,7 +53,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain
 
             try
             {
-                new TdmsObjectValueBehavior(row.Attributes[columnName]).GetValue().Attributes.ToList().ForEach(a => result.Add(a));
+                new TdmsObjectTdmsAttributeValueBehavior(row.Attributes[columnName]).GetValue().Attributes.ToList().ForEach(a => result.Add(a));
             }
             catch (Exception)
             {
