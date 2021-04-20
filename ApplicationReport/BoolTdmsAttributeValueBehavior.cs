@@ -9,7 +9,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
         public BoolTdmsAttributeValueBehavior(TDMSAttribute attribute)
             : base(
                 attribute,
-                new AlterInvocationSafe<TDMSAttribute, bool>(
+                new SafeInvocation<TDMSAttribute, bool>(
                     new Invocation<TDMSAttribute, bool>(
                         attribute,
                         (attr) => Convert.ToBoolean(attr.Value)

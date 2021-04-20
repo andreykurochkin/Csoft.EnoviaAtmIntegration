@@ -1,6 +1,10 @@
 ﻿using System;
-
 namespace Csoft.EnoviaAtmIntegration.Domain {
+    /// <summary>
+    /// invokes encapsulated delegate 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="TResult"></typeparam>
     public class Invocation<T, TResult> : IInvokable<T, TResult> {
         public T Target { get; }
         public Func<T, TResult> Command { get; }
@@ -9,11 +13,5 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
             this.Command = command;
         }
         public virtual TResult Invoke() => Command(Target);
-    }
-
-    public interface IInvokable<T, TResult> {
-        public T Target { get; }
-        public Func<T, TResult> Command { get; }
-        public TResult Invoke();
     }
 }

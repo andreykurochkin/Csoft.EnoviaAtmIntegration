@@ -8,7 +8,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
     public class StringTdmsAttributeValueBehavior : TdmsAttributeValueBehavior<string> {
         public StringTdmsAttributeValueBehavior(TDMSAttribute attribute) : base(
             attribute,
-            new AlterInvocationSafe<TDMSAttribute, string>(
+            new SafeInvocation<TDMSAttribute, string>(
                 new Invocation<TDMSAttribute, string>(
                     attribute,
                     (attr) => attr.Value.ToString()
