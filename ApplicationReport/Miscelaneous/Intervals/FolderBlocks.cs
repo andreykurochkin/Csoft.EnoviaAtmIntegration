@@ -28,7 +28,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain
             attribute.Rows.ForEach(row =>
             {
                 int foo;
-                string rowValue = new StringValueBehavior(row.Attributes["A_Block_Number"]).GetValue();
+                string rowValue = new StringTdmsAttributeValueBehavior(row.Attributes["A_Block_Number"]).GetValue();
                 if (int.TryParse(rowValue, out foo)) result.Add(foo);
             });
 
