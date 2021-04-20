@@ -30,7 +30,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
 
         public string CreateApplicantName()
         {
-            return new TdmsUserAttributeValueBehavior(
+            return new TdmsUserTdmsAttributeValueBehavior(
                 setAttributes.GetAttribute("A_User"))
                 .GetValue().ToFioSafe();
         }
