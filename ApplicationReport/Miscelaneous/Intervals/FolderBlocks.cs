@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using Tdms.Api;
 using Tdms;
+using Csoft.Tdms.Common.Attributes;
 
 namespace Csoft.EnoviaAtmIntegration.Domain {
     /// <summary>

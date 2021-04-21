@@ -13,6 +13,7 @@ using Tdms.Tasks;
 using Tdms.Data;
 using System.Runtime.CompilerServices;
 using Csoft.EnoviaAtmIntegration.Domain;
+using Csoft.Tdms.Common.Attributes;
 
 namespace Csoft.EnoviaAtmIntegration.Domain
 {

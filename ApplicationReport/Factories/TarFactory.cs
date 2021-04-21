@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Csoft.Tdms.Common.Attributes;
+using System;
 using System.Linq;
 using Tdms.Api;
 
@@ -36,19 +37,19 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
         }
 
         public string CreateBuildingName() => 
-            new StringValueBehavior(
+            new StringTdmsAttributeValueBehavior(
                 ecaAttributes.GetAttribute
                 ("A_Building_Code"))
             .GetValue();
 
         public string CreateRevision() => 
-            new StringValueBehavior(
+            new StringTdmsAttributeValueBehavior(
                 setAttributes.GetAttribute(
                     "A_Revision_Number"))
             .GetValue();
 
         public string CreateDescription() => 
-            new StringValueBehavior(
+            new StringTdmsAttributeValueBehavior(
                 ecaAttributes.GetAttribute("A_Name"))
             .GetValue();
 
@@ -76,11 +77,11 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
         }
 
         public string CreateSetCode() => 
-            new StringValueBehavior(
+            new StringTdmsAttributeValueBehavior(
                 setAttributes.GetAttribute("A_Designation"))
             .GetValue();
 
-        public string CreateSetName() => new StringValueBehavior(setAttributes.GetAttribute("A_Name")).GetValue();
+        public string CreateSetName() => new StringTdmsAttributeValueBehavior(setAttributes.GetAttribute("A_Name")).GetValue();
 
         public string CreateStatus()
         {
@@ -96,7 +97,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
 
         public string CreateSystemName()
         {
-            var val = new StringValueBehavior(
+            var val = new StringTdmsAttributeValueBehavior(
                 ecaAttributes.GetAttribute("A_System_Code"))
                 .GetValue();
             return (string.IsNullOrEmpty(val)) ? "-" : val;
@@ -104,7 +105,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
 
         public string CreateEcaId()
         { 
-            return new StringValueBehavior(
+            return new StringTdmsAttributeValueBehavior(
                 ecaAttributes.GetAttribute("A_ObjectGUID"))
                 .GetValue();
         }

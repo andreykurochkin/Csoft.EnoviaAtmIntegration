@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Csoft.Tdms.Common.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,10 +25,10 @@ namespace Csoft.EnoviaAtmIntegration.Domain.Tests
 
             var attribute = row.Attributes["A_Fl_Record"];
 
-            var status = new BoolValueBehavior(attribute).GetValue();
+            var status = new BoolTdmsAttributeValueBehavior(attribute).GetValue();
             application.DebugPrint($"A_Fl_Record: {status}");
 
-            var strValue = new StringValueBehavior(attribute).GetValue();
+            var strValue = new StringTdmsAttributeValueBehavior(attribute).GetValue();
             application.DebugPrint($"A_Fl_Record: {strValue}");
         }
     }

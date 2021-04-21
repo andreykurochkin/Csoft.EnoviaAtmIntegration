@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using Tdms.Api;
 using Tdms;
+using Csoft.Tdms.Common.Attributes;
 
 namespace Csoft.EnoviaAtmIntegration.Domain
 {
@@ -25,7 +26,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain
             GetBlocks().ForEach(block =>
             {
                 int foo;
-                string blockNumber = new StringValueBehavior(block.Attributes["A_Block_Number"]).GetValue();
+                string blockNumber = new StringTdmsAttributeValueBehavior(block.Attributes["A_Block_Number"]).GetValue();
                 if (int.TryParse(blockNumber, out foo)) result.Add(foo);
             });
 

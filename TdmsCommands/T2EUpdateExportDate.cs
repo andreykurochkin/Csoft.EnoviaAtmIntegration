@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Csoft.Tdms.Common.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -948,7 +949,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain
             var trash = tdmsObjects.ToList().
                 Select(o => new
                 {
-                    id = new StringValueBehavior(
+                    id = new StringTdmsAttributeValueBehavior(
                         o.Attributes["A_ObjectGUID"]).GetValue(),
                     date = new DateTimeTdmsAttributeValueBehavior(
                         o.Attributes["A_Date1"]).GetValue()

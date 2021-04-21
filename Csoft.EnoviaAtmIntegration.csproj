@@ -55,5 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Csoft.EnoviaAtmIntegration.AtmContext\Csoft.EnoviaAtmIntegration.AtmContext.csproj" />
+    <ProjectReference Include="..\Csoft.Tdms.Common\Csoft.Tdms.Common.csproj" />
   </ItemGroup>
 </Project>
