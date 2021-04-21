@@ -16,30 +16,28 @@ using Tdms.Log;
 using System.Collections;
 
 namespace Csoft.EnoviaAtmIntegration.Domain {
-    public class ArRequests : IEnumerable<IArPostRequest>
-    {
-        private List<IArPostRequest> arRequests= 
-            new List<IArPostRequest>();
-
-        public ArRequests(IEnumerable<Ar> ars)
-        {
-            ars.ToList().ForEach(ar =>
-            arRequests.Add(new ArRequest(ar)));
+    public class ArRequests : IEnumerable<IArPostRequest> {
+        private List<IArPostRequest> Requests {
+            get {
+                return requests.Value;
+            }
         }
-
-        public IEnumerator<IArPostRequest> GetEnumerator()
-        {
-            return arRequests.GetEnumerator();
+        private Lazy<List<IArPostRequest>> requests;
+        public ArRequests(IEnumerable<Ar> ars) {
+            requests = new(() => 
+            {
+                List<IArPostRequest> result = new();
+                using var client = new HttpClient();
+                ars.ToList().ForEach(ar => result.Add(new ArRequest(ar, client)));
+                return result;
+            });
         }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return arRequests.GetEnumerator();
+        public IEnumerator<IArPostRequest> GetEnumerator() {
+            return Requests.GetEnumerator();
         }
-
-        public void PostAsync()
-        {
-            arRequests.ForEach(r => r.PostAsync());
+        IEnumerator IEnumerable.GetEnumerator() {
+            return Requests.GetEnumerator();
         }
+        public void PostAsync() => Requests.ForEach(r => r.PostAsync());
     }
 }

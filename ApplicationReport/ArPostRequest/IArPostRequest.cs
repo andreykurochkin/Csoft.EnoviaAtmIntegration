@@ -18,7 +18,6 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
     public interface IArPostRequest
     {
         Ar Ar { get; }
-        HttpResponseMessage Response { get; }
         HttpResponseMessage PostAsync();
     }
 }
