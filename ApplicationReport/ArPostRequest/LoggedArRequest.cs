@@ -26,14 +26,14 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
             Origin = request;
         }
         public Ar Ar { get => Origin.Ar; }
-        public HttpResponseMessage Response { get => Origin.TaskResponse.Result; }
-        public HttpResponseMessage PostAsync() {
+        public Task<HttpResponseMessage> TaskResponse { get => Origin.TaskResponse; };
+        public Task<HttpResponseMessage> PostAsync() {
             Log.Debug("forecast: new application report");
             Log.Debug($"{Origin.Ar.ToString()}");
-            var responseMessage = Origin.PostAsync().Result;
+            var task = Origin.PostAsync();
             Log.Debug($"report");
-            Log.Debug($"status code: {responseMessage.StatusCode}");
-            return responseMessage;
+            Log.Debug($"status code: {task.Result.StatusCode}");
+            return task;
         }
     }
 }
