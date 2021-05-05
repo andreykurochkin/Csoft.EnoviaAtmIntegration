@@ -17,7 +17,8 @@ using Tdms.Log;
 namespace Csoft.EnoviaAtmIntegration.Domain {
     public interface IArPostRequest
     {
-        Ar Ar { get; }
-        HttpResponseMessage PostAsync();
+        public Ar Ar { get; }
+        public Task<HttpResponseMessage> PostAsync();
+        public Task<HttpResponseMessage> TaskResponse { get; }
     }
 }

@@ -20,28 +20,20 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
     /// decorates ArRequest with log on PostAsync call
     /// </summary>
     public class LoggedArRequest : IArPostRequest {
-        private IArPostRequest origin;
-
+        private IArPostRequest Origin { get; }
+        private ILogger Log { get; } = LogManager.GetLogger($"{typeof(LoggedArRequest)}");
         public LoggedArRequest(IArPostRequest request) {
-            this.origin = request;
+            Origin = request;
         }
-
-        public Ar Ar => origin.Ar;
-
-        public HttpResponseMessage Response =>
-            origin.Response;
-
+        public Ar Ar { get => Origin.Ar; }
+        public HttpResponseMessage Response { get => Origin.TaskResponse.Result; }
         public HttpResponseMessage PostAsync() {
-            var log = LogManager.GetLogger($"{typeof(LoggedArRequest)}");
-
-            log.Debug("forecast: new application report");
-            log.Debug($"{origin.Ar.ToString()}");
-
-            var answer = origin.PostAsync();
-
-            log.Debug($"report");
-            log.Debug($"status code: {answer.StatusCode}");
-            return answer;
+            Log.Debug("forecast: new application report");
+            Log.Debug($"{Origin.Ar.ToString()}");
+            var responseMessage = Origin.PostAsync().Result;
+            Log.Debug($"report");
+            Log.Debug($"status code: {responseMessage.StatusCode}");
+            return responseMessage;
         }
     }
 }

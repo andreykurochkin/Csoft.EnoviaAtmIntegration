@@ -17,27 +17,25 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
     [TdmsApi("SendToEnovia")]
     public class SendToEnovia {
         private readonly TDMSApplication app;
-
-        public SendToEnovia(TDMSApplication app) {
-            this.app = app;
-        }
-
+        public SendToEnovia(TDMSApplication app) => this.app = app;
         public void Execute(TDMSObject obj) {
-            var rows = Utility.GetRowsSafe(
-                obj.Attributes["A_TblWorkability"]);
-
+            var rows = Utility.GetRowsSafe(obj.Attributes["A_TblWorkability"]);
             var requests = new LoggedArRequests(
                 new ArRequests(
                     new AdditionalFilter(
                         new MainFilter(
                             new AtomicArs(
                                 new Ars(
-                                    new TarFactories(
-                                        rows)))))));
-
+                                    new TarFactories(rows)
+                                )
+                            )
+                        )
+                    )
+                )
+            );
             requests.PostAsync();
-
-            if (requests.Where(r => (r.Response.IsSuccessStatusCode)).Any()) {
+            var successfulResponses = requests.Where(r => (r.TaskResponse.Result.IsSuccessStatusCode));
+            if (successfulResponses.Any()) {
                 obj.Attributes["A_Fl_Record"].Value = true;
             }
         }

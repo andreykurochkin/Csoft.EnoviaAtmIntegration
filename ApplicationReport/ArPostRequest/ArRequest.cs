@@ -1,23 +1,32 @@
 ﻿using Csoft.EnoviaAtmIntegration.Domain.Endpoints;
 using System.Net.Http;
+using System.Threading.Tasks;
+
 namespace Csoft.EnoviaAtmIntegration.Domain {
     /// <summary>
-    /// creates Post request to Enovia
+    /// sends Post request to Enovia, keeps result of request
     /// </summary>
     public class ArRequest : IArPostRequest {
         public Ar Ar { get; }
         private HttpClient HttpClient { get; }
+        public Task<HttpResponseMessage> TaskResponse { 
+            get { 
+                return taskResponse; 
+            }
+        }
+        private Task<HttpResponseMessage> taskResponse;
         public ArRequest(Ar ear, HttpClient httpClient) {
             Ar = ear;
             HttpClient = httpClient;
         }
-        public virtual HttpResponseMessage PostAsync() {
+        public virtual Task<HttpResponseMessage> PostAsync() {
             HttpClient.DefaultRequestHeaders.Authorization = new EnoviaBasicAuthenticationHeaderValue();
             var response = HttpClient.PostAsync(
                 new RemoteIntegrationUri(Ar.EcaId),
                 new ArStringContent(Ar)
             );
-            return response.Result;
+            taskResponse = response;
+            return response;
         }
     }
 }

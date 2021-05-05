@@ -22,7 +22,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
                 return requests.Value;
             }
         }
-        private Lazy<List<IArPostRequest>> requests;
+        private readonly Lazy<List<IArPostRequest>> requests;
         public ArRequests(IEnumerable<Ar> ars) {
             requests = new(() => 
             {
