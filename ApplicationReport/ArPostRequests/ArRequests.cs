@@ -17,11 +17,7 @@ using System.Collections;
 
 namespace Csoft.EnoviaAtmIntegration.Domain {
     public class ArRequests : IEnumerable<IArPostRequest> {
-        private List<IArPostRequest> Requests {
-            get {
-                return requests.Value;
-            }
-        }
+        private List<IArPostRequest> Requests { get => requests.Value;}
         private readonly Lazy<List<IArPostRequest>> requests;
         public ArRequests(IEnumerable<Ar> ars) {
             requests = new(() => 

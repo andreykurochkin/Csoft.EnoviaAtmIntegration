@@ -26,7 +26,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
             Origin = request;
         }
         public Ar Ar { get => Origin.Ar; }
-        public Task<HttpResponseMessage> TaskResponse { get => Origin.TaskResponse; };
+        public Task<HttpResponseMessage> TaskResponse { get => Origin.TaskResponse; }
         public Task<HttpResponseMessage> PostAsync() {
             Log.Debug("forecast: new application report");
             Log.Debug($"{Origin.Ar.ToString()}");

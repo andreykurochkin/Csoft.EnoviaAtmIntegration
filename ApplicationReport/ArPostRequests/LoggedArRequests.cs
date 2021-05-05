@@ -25,16 +25,11 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
         public void PostAsync() {
             var log = LogManager.GetLogger($"{typeof(LoggedArRequest)}");
             log.Debug("forecast");
-            log.Debug($"expected application reports: " +
-                $"{requests.Count}");
-
-            requests.ForEach(r => r.PostAsync());
-            var goodRequests = requests
-                .Where(r => r.Response.IsSuccessStatusCode);
-
+            log.Debug($"expected application reports: {Requests.Count}");
+            Requests.ForEach(r => r.PostAsync());
             log.Debug("report");
-            log.Debug($"created application reports: " +
-                $"{goodRequests.Count()}");
+            var goodRequests = Requests.Where(r => r.TaskResponse.Result.IsSuccessStatusCode);
+            log.Debug($"created application reports: {goodRequests.Count()}");
         }
     }
 }
