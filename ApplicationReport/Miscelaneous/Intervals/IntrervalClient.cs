@@ -1,48 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
 using Tdms.Api;
 using Tdms;
+using Csoft.Common.NumbersInterval;
+using Csoft.Tdms.Common.Attributes;
+using System.Linq;
 
-namespace Csoft.EnoviaAtmIntegration.Domain
-{
+namespace Csoft.EnoviaAtmIntegration.Domain {
     /// <summary>
     /// acquires blocks numbers via different strategies
     /// </summary>
-    public class BlocksNumbersClient
-    {
+    public class BlocksNumbersClient {
         private TDMSObject document;
-
-        public BlocksNumbersClient(TDMSObject document)
-        {
+        public BlocksNumbersClient(TDMSObject document) {
             this.document = document;
         }
-
-        public List<int> GetNumbers()
-        {
+        public List<int> GetNumbers() {
             var strategy = GetStrategy();
             if (strategy == null) return new List<int>();
-            return strategy.GetNumbers();
+            return strategy.Numbers.Values.Select(i => (int)i).ToList();
         }
-
-        private BlocksNumbersStrategy GetStrategy()
-        {
+        private INumbersStrategy GetStrategy() {
             var input = new InitialDataOfBlockNumbersStrategies(document);
-
-            BlocksNumbersStrategy strategy = new DocumentBlocks(input.GetAttribute());
-            if (strategy.IsAplicable) return strategy;
-
-            strategy = new FolderBlocks(input.GetTable());
-            if (strategy.IsAplicable) return strategy;
-
-            strategy = new NppBlocks(input.GetNpp());
-            if (strategy.IsAplicable) return strategy;
-
+            INumbersStrategy strategy;
+            strategy = new DocumentBlocks(new StringTdmsAttributeValueBehavior(input.GetAttribute()).GetValue());
+            if (strategy.IsAplicable) {
+                return strategy;
+            }
+            strategy = new FolderBlocks(input.GetAttributeValuesFromTable(input.GetTable()));
+            if (strategy.IsAplicable) {
+                return strategy;
+            }
+            strategy = new BlocksOfDesignObject(
+               input.GetBlocksNumbersAsStrings(input.GetBlocks(input.GetNpp()))
+            );
+            if (strategy.IsAplicable) {
+                return strategy;
+            }
             return new DefaultBlocksStrategy();
         }
-
     }
 }

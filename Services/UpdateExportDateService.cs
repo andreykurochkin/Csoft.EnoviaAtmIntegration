@@ -13,9 +13,9 @@ namespace Csoft.EnoviaAtmIntegration.Domain.Services {
     /// updates export date of TDMSObjects
     /// </summary>
     class UpdateExportDateService {
-        TDMSApplication app;
+        readonly TDMSApplication app;
         private static bool isServiceRunning = false;
-        private ILogger log;
+        private readonly ILogger log;
 
         public UpdateExportDateService(TDMSApplication app) {
             this.app = app;

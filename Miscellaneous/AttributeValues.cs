@@ -22,8 +22,8 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
         }
         private static bool TryCast<T>(object obj, out T result) {
             result = default;
-            if (obj is T) {
-                result = (T)obj;
+            if (obj is T t) {
+                result = t;
                 return true;
             }
             // If it's null, we can't get the type.

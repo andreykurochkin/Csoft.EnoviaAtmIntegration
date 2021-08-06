@@ -210,20 +210,7 @@ namespace Csoft.EnoviaAtmIntegration.Domain {
 
         }
 
-        /// <summary>
-        /// splits string into substrings of integers
-        /// </summary>
-        /// <param name="regex"></param>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        public static string[] SplitSilent(this SubstringsOfIntegersRegex regex, string input) {
-            try {
-                return regex.Split(input);
-            }
-            catch (Exception) {
-                return null;
-            }
-        }
+        
         internal static IEnumerable<TDMSObject> GetObjectsByGUIDs(
             this TDMSApplication app,
             IEnumerable<string> guids

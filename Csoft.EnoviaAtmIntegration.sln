@@ -11,7 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csoft.EnoviaAtmIntegration"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csoft.EnoviaAtmIntegration.AtmContext", "..\Csoft.EnoviaAtmIntegration.AtmContext\Csoft.EnoviaAtmIntegration.AtmContext.csproj", "{AEA00C2B-E2AE-4E71-B6A2-FB015AF91402}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csoft.Tdms.Common", "..\Csoft.Tdms.Common\Csoft.Tdms.Common.csproj", "{3EFD12E9-D38C-48BE-93C2-1F36ECD5C967}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csoft.Tdms.Common", "..\Csoft.Tdms.Common\Csoft.Tdms.Common.csproj", "{3EFD12E9-D38C-48BE-93C2-1F36ECD5C967}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSoft.Common.NumbersInterval", "..\CSoft.Common.NumbersInterval\CSoft.Common.NumbersInterval\CSoft.Common.NumbersInterval.csproj", "{7BE1C347-FF4C-4571-B582-EBD301E8FF31}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A4BD648C-15BE-494D-80F1-763F379C69F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSoft.Common.NumbersIntervalTests", "..\CSoft.Common.NumbersIntervalTests\CSoft.Common.NumbersIntervalTests.csproj", "{B93A8296-EE2F-4B2D-B38C-F65D57F650E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,9 +44,24 @@ Global
 		{3EFD12E9-D38C-48BE-93C2-1F36ECD5C967}.Farvater|Any CPU.Build.0 = Debug|Any CPU
 		{3EFD12E9-D38C-48BE-93C2-1F36ECD5C967}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EFD12E9-D38C-48BE-93C2-1F36ECD5C967}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BE1C347-FF4C-4571-B582-EBD301E8FF31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BE1C347-FF4C-4571-B582-EBD301E8FF31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BE1C347-FF4C-4571-B582-EBD301E8FF31}.Farvater|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BE1C347-FF4C-4571-B582-EBD301E8FF31}.Farvater|Any CPU.Build.0 = Debug|Any CPU
+		{7BE1C347-FF4C-4571-B582-EBD301E8FF31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BE1C347-FF4C-4571-B582-EBD301E8FF31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B93A8296-EE2F-4B2D-B38C-F65D57F650E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B93A8296-EE2F-4B2D-B38C-F65D57F650E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B93A8296-EE2F-4B2D-B38C-F65D57F650E8}.Farvater|Any CPU.ActiveCfg = Debug|Any CPU
+		{B93A8296-EE2F-4B2D-B38C-F65D57F650E8}.Farvater|Any CPU.Build.0 = Debug|Any CPU
+		{B93A8296-EE2F-4B2D-B38C-F65D57F650E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B93A8296-EE2F-4B2D-B38C-F65D57F650E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B93A8296-EE2F-4B2D-B38C-F65D57F650E8} = {A4BD648C-15BE-494D-80F1-763F379C69F7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BE0EF4F-9BB7-44F2-A493-746E123152F5}
